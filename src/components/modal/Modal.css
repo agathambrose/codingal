@@ -1,0 +1,37 @@
+input[type="checkbox"] {
+  display: none;
+}
+
+label {
+  position: relative;
+}
+
+label::before {
+  content: "";
+  background: url("");
+  background-position: center;
+  background-size: contain;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  left: -44px;
+  top: -8px;
+
+  transform: scale(0) rotateZ(180deg);
+  transition: all 0.4s cubic-bezier(0.54, 0.01, 0, 1.49);
+}
+
+input[type="checkbox"]:checked + label::before {
+  transform: scale(1) rotateZ(0deg);
+}
+
+label::after {
+  content: "";
+  border: 1px solid lightgray;
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  left: -40px;
+  top: -2px;
+  border-radius: 50%;
+}
