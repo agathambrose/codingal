@@ -1,11 +1,11 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
 import { useTimer } from "react-timer-hook";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
-import { CircularProgress, Modal, Backdrop } from "@material-ui/core";
+import { Modal, Backdrop } from "@material-ui/core";
 import "core-js";
 import { useSpring, animated } from "react-spring";
-import React from "react";
+import { Link } from "react-router-dom";
 import DisplayModal from "./modal/Modal";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -85,7 +85,7 @@ const Header = () => {
 
   return (
     <div>
-      <nav className="bg-white font-open-sans">
+      <nav className="bg-white font-poppins">
         <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
@@ -113,13 +113,16 @@ const Header = () => {
               </div>
             </div>
             <div className="items-center hidden space-x-4 md:flex">
-              <p className="text-sm font-bold text-gray-600 font-open-sans">
+              <Link to="/posts">
+                <button>Posts</button>
+              </Link>
+              <p className="text-sm font-bold text-gray-600 font-poppins">
                 <span>{minutes}</span>
                 <span>:</span>
                 <span>{seconds}</span>
               </p>
               <button
-                className="px-5 py-2 text-sm font-semibold text-white transition rounded bg-orange-border focus:outline-none hover:bg-opacity-90 font-open-sans"
+                className="px-5 py-2 text-sm font-semibold text-white transition rounded bg-orange-border focus:outline-none hover:bg-opacity-90 font-poppins"
                 onClick={handleModalOpen}
               >
                 End class

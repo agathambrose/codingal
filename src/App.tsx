@@ -1,10 +1,20 @@
-import Header from "./components/Header";
+import { Router, Route, Switch } from "react-router-dom";
+import history from "./utils/history";
+import Class from "./view/class";
+import Posts from "./view/posts";
 
 const App = () => {
   return (
-    <div className="font-roboto">
-      <Header />
-    </div>
+    <Router history={history}>
+      <Switch>
+        <Route exact path="/">
+          <Class />
+        </Route>
+        <Route path="/posts">
+          <Posts />
+        </Route>
+      </Switch>
+    </Router>
   );
 };
 

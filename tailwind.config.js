@@ -8,8 +8,7 @@ module.exports = {
         "orange-border": "#ff5a43",
       },
       fontFamily: {
-        "open-sans": "'Open Sans', sans-serif, monospace",
-        Roboto: "'Roboto', sans-serif, monospace",
+        poppins: "'Poppins', sans-serif, monospace",
       },
       borderWidth: {
         1.5: "1.5px",

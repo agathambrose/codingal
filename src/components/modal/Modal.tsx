@@ -23,31 +23,51 @@ const DisplayModal = () => {
           </svg>
         </button>
       </div>
-      <form className="flex flex-col font-Roboto">
+      <form className="flex flex-col font-poppins">
         <h2 className="mb-4 ml-4 text-2xl font-bold">
           Select a reason to end class
         </h2>
         <div className="-mr-3 ml-11">
-          <div className="text-lg">
+          <div className="text-lg font-medium">
             <div className="mb-3 space-x-3">
-              <input type="checkbox" name="complete" id="complete" />
+              <input
+                type="checkbox"
+                className="checkbox"
+                name="complete"
+                id="complete"
+              />
               <label htmlFor="complete">Class completed</label>
             </div>
             <div className="mb-3 space-x-3">
-              <input type="checkbox" name="interrupted" id="interrupted" />
+              <input
+                type="checkbox"
+                className="checkbox"
+                name="interrupted"
+                id="interrupted"
+              />
               <label htmlFor="interrupted">Class interrupted/aborted</label>
             </div>
           </div>
 
-          <div className="px-3 text-base">
+          <div className="px-3 text-sm">
             <div className="mb-3 space-x-3">
-              <input type="checkbox" name="noshow" id="noshow" />
+              <input
+                type="checkbox"
+                className="checkbox"
+                name="noshow"
+                id="noshow"
+              />
               <label htmlFor="noshow">
                 Student didn't show up for the class.
               </label>
             </div>
             <div className="mb-3 space-x-3">
-              <input type="checkbox" name="nointerest" id="nointerest" />
+              <input
+                type="checkbox"
+                className="checkbox"
+                name="nointerest"
+                id="nointerest"
+              />
               <label htmlFor="nointerest">
                 Student didn't show any interest.
               </label>
@@ -55,6 +75,7 @@ const DisplayModal = () => {
             <div className="mb-3 space-x-3">
               <input
                 type="checkbox"
+                className="checkbox"
                 name="disconnectedstd"
                 id="disconnectedstd"
               />
@@ -63,13 +84,19 @@ const DisplayModal = () => {
             <div className="mb-3 space-x-3">
               <input
                 type="checkbox"
+                className="checkbox"
                 name="disconnectedyou"
                 id="disconnectedyou"
               />
               <label htmlFor="disconnectedyou">I got disconnected.</label>
             </div>
             <div className="mb-3 space-x-3">
-              <input type="checkbox" name="other" id="other" />
+              <input
+                type="checkbox"
+                className="checkbox"
+                name="other"
+                id="other"
+              />
               <label htmlFor="other">Other reasons</label>
             </div>
             <div>
@@ -90,7 +117,10 @@ const DisplayModal = () => {
           >
             End Class
           </button>
-          <button type="button" className="ml-3 text-gray-600 bg-white">
+          <button
+            type="button"
+            className="px-2 py-2 ml-3 text-gray-600 border border-white rounded-md focus:outline-none hover:border-orange-border"
+          >
             Cancel
           </button>
         </div>
