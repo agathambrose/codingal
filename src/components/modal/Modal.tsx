@@ -21,7 +21,7 @@ const DisplayModal = ({ restart, resume }: PropTypes) => {
   };
 
   const onChangeChecked = () => {
-    setCheckBoxChecked(true);
+    setCheckBoxChecked(checked);
   };
 
   const handleResume = () => {
