@@ -10,6 +10,7 @@ const DisplayModal = ({ restart, resume }: PropTypes) => {
   const [show, setShow] = useState(false);
   const [showTextArea, setShowTextArea] = useState(false);
   const [timer, setTimer] = useState();
+  const [checked, setCheckBoxChecked] = useState(false);
 
   const handleShow = () => {
     setShow(true);
@@ -17,6 +18,10 @@ const DisplayModal = ({ restart, resume }: PropTypes) => {
 
   const handleOtherReasons = () => {
     setShowTextArea(true);
+  };
+
+  const onChangeChecked = () => {
+    setCheckBoxChecked(true);
   };
 
   const handleResume = () => {
@@ -56,11 +61,15 @@ const DisplayModal = ({ restart, resume }: PropTypes) => {
         </h2>
         <div className="ml-5 -mr-3">
           <div className="text-lg font-medium">
-            <div className="mb-3 space-x-3 checkbox">
+            <div className="mb-3 space-x-3 checkbox" onChange={onChangeChecked}>
               <input type="checkbox" name="complete" id="complete" />
               <label htmlFor="complete">Class completed</label>
             </div>
-            <div className="mb-3 space-x-3 checkbox" onClick={handleShow}>
+            <div
+              className="mb-3 space-x-3 checkbox"
+              onClick={handleShow}
+              onChange={onChangeChecked}
+            >
               <input type="checkbox" name="interrupted" id="interrupted" />
               <label htmlFor="interrupted">Class interrupted/aborted</label>
             </div>
@@ -71,19 +80,28 @@ const DisplayModal = ({ restart, resume }: PropTypes) => {
               show ? "block" : "hidden"
             } transition delay-1000`}
           >
-            <div className="mb-3 space-x-3 checkbox-sm">
+            <div
+              className="mb-3 space-x-3 checkbox-sm"
+              onChange={onChangeChecked}
+            >
               <input type="checkbox" name="noshow" id="noshow" />
               <label htmlFor="noshow">
                 Student didn't show up for the class.
               </label>
             </div>
-            <div className="mb-3 space-x-3 checkbox-sm">
+            <div
+              className="mb-3 space-x-3 checkbox-sm"
+              onChange={onChangeChecked}
+            >
               <input type="checkbox" name="nointerest" id="nointerest" />
               <label htmlFor="nointerest">
                 Student didn't show any interest.
               </label>
             </div>
-            <div className="mb-3 space-x-3 checkbox-sm">
+            <div
+              className="mb-3 space-x-3 checkbox-sm"
+              onChange={onChangeChecked}
+            >
               <input
                 type="checkbox"
                 name="disconnectedstd"
