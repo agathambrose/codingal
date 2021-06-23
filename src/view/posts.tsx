@@ -21,7 +21,7 @@ type DataType = {
 };
 
 const Posts = () => {
-  const [data, setData] = useState<any | {}>({});
+  const [data, setData] = useState<any | []>([]);
   const [size] = useState(30);
   const [page, setPage] = useState(1);
   const [has_more, setHasMore] = useState(true);
@@ -32,7 +32,6 @@ const Posts = () => {
     const getMoreData = async () => {
       try {
         const res = await axios.get(url);
-        console.log(res);
         const { data: newData } = res.data;
         console.log("newData", newData);
         console.log("data", data);
@@ -80,19 +79,18 @@ const Posts = () => {
         <div className="flex flex-col flex-wrap items-center w-screen md:justify-center md:flex-row font-poppins">
           {data.map(({ key, id, name, trips, airline }: DataType) => {
             return (
-              <div className="w-4/5 m-3 transition-shadow delay-75 border border-gray-100 rounded shadow-md hover:shadow-xl lg:w-1/5">
+              <div className="w-4/5 py-4 m-3 transition-shadow delay-75 border border-gray-100 rounded shadow-md hover:shadow-xl lg:w-1/4">
                 <div className="leading-8" key={key}>
                   <div
-                    className="flex px-4 py-1 space-x-2 text-2xl font-medium text-gray-900 md:text-xl"
+                    className="flex px-4 py-2 space-x-2 text-2xl font-medium text-gray-900 truncate md:text-xl"
                     id={id}
                   >
                     <span className="font-bold ">Passenger:</span> <p>{name}</p>
                   </div>
-                  <div className="">
+                  <div className="flex items-center justify-between py-3">
                     <p className="px-4 py-1 text-sm">{trips}</p>
-                    <p className="px-4 py-1 text-sm">{airline.name}</p>
                     <img
-                      className="px-4 py-1 text-sm"
+                      className="w-20 h-8 text-sm"
                       src={airline.logo}
                       alt=""
                     />

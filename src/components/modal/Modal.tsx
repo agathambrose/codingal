@@ -1,6 +1,9 @@
+import { useState } from "react";
 import "./Modal.css";
 
 const DisplayModal = () => {
+  const [show, setShow] = useState(false);
+
   return (
     <div>
       <div className="flex justify-end">
@@ -38,7 +41,7 @@ const DisplayModal = () => {
               />
               <label htmlFor="complete">Class completed</label>
             </div>
-            <div className="mb-3 space-x-3">
+            <div className="mb-3 space-x-3" onClick={() => setShow(true)}>
               <input
                 type="checkbox"
                 className="checkbox"
