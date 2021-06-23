@@ -194,14 +194,19 @@ const Header = () => {
               id="mobile-menu"
             >
               <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <p className="block px-3 py-2 text-base font-bold text-center text-black rounded-md hover:bg-white hover:text-black">
+                <Link to="/posts">
+                  <button className="w-full px-3 py-2 text-base font-bold rounded-md hover:bg-white font-poppins">
+                    Posts
+                  </button>
+                </Link>
+                <p className="block px-3 py-2 text-base font-bold text-center text-white rounded-md hover:bg-white hover:text-black">
                   <span>{minutes}</span>
                   <span>:</span>
                   <span>{seconds}</span>
                   {timer}
                 </p>
                 <button
-                  className="block w-full px-3 py-2 text-base font-semibold text-black rounded-md bg-orange-bg hover:bg-white hover:text-black"
+                  className="block w-full px-3 py-2 text-base font-semibold text-black rounded-md focus:outline-none bg-orange-bg hover:bg-white hover:text-black"
                   onClick={handleModalOpen}
                 >
                   End class
@@ -226,7 +231,7 @@ const Header = () => {
       >
         <Fade in={modal}>
           <div className={classes.paper}>
-            <DisplayModal restart={restart} resume={resume} />
+            <DisplayModal restart={restart} resume={handleModalClose} />
           </div>
         </Fade>
       </Modal>

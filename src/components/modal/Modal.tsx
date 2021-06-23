@@ -8,7 +8,16 @@ interface PropTypes {
 
 const DisplayModal = ({ restart, resume }: PropTypes) => {
   const [show, setShow] = useState(false);
+  const [showTextArea, setShowTextArea] = useState(false);
   const [timer, setTimer] = useState();
+
+  const handleShow = () => {
+    setShow(true);
+  };
+
+  const handleOtherReasons = () => {
+    setShowTextArea(true);
+  };
 
   const handleResume = () => {
     setTimer(resume);
@@ -45,86 +54,66 @@ const DisplayModal = ({ restart, resume }: PropTypes) => {
         <h2 className="mb-4 ml-4 text-2xl font-bold">
           Select a reason to end class
         </h2>
-        <div className="-mr-3 ml-11">
+        <div className="ml-5 -mr-3">
           <div className="text-lg font-medium">
-            <div className="mb-3 space-x-3">
-              <input
-                type="checkbox"
-                className="checkbox"
-                name="complete"
-                id="complete"
-              />
+            <div className="mb-3 space-x-3 checkbox">
+              <input type="checkbox" name="complete" id="complete" />
               <label htmlFor="complete">Class completed</label>
             </div>
-            <div className="mb-3 space-x-3" onClick={() => setShow(true)}>
-              <input
-                type="checkbox"
-                className="checkbox"
-                name="interrupted"
-                id="interrupted"
-              />
+            <div className="mb-3 space-x-3 checkbox" onClick={handleShow}>
+              <input type="checkbox" name="interrupted" id="interrupted" />
               <label htmlFor="interrupted">Class interrupted/aborted</label>
             </div>
           </div>
 
-          <div className="px-3 text-sm">
-            <div className="mb-3 space-x-3">
-              <input
-                type="checkbox"
-                className="checkbox"
-                name="noshow"
-                id="noshow"
-              />
+          <div
+            className={`px-3 text-sm ${
+              show ? "block" : "hidden"
+            } transition delay-1000`}
+          >
+            <div className="mb-3 space-x-3 checkbox-sm">
+              <input type="checkbox" name="noshow" id="noshow" />
               <label htmlFor="noshow">
                 Student didn't show up for the class.
               </label>
             </div>
-            <div className="mb-3 space-x-3">
-              <input
-                type="checkbox"
-                className="checkbox"
-                name="nointerest"
-                id="nointerest"
-              />
+            <div className="mb-3 space-x-3 checkbox-sm">
+              <input type="checkbox" name="nointerest" id="nointerest" />
               <label htmlFor="nointerest">
                 Student didn't show any interest.
               </label>
             </div>
-            <div className="mb-3 space-x-3">
+            <div className="mb-3 space-x-3 checkbox-sm">
               <input
                 type="checkbox"
-                className="checkbox"
                 name="disconnectedstd"
                 id="disconnectedstd"
               />
               <label htmlFor="disconnectedstd">Student got disconnected.</label>
             </div>
-            <div className="mb-3 space-x-3">
+            <div className="mb-3 space-x-3 checkbox-sm">
               <input
                 type="checkbox"
-                className="checkbox"
                 name="disconnectedyou"
                 id="disconnectedyou"
               />
               <label htmlFor="disconnectedyou">I got disconnected.</label>
             </div>
-            <div className="mb-3 space-x-3">
-              <input
-                type="checkbox"
-                className="checkbox"
-                name="other"
-                id="other"
-              />
+            <div
+              className="mb-3 space-x-3 checkbox-sm"
+              onClick={handleOtherReasons}
+            >
+              <input type="checkbox" name="other" id="other" />
               <label htmlFor="other">Other reasons</label>
             </div>
-            <div>
-              <textarea
-                rows={4}
-                cols={50}
-                placeholder="Type here"
-                className="w-11/12 pl-2 py-2 -ml-6 my-3 border-1.5 rounded"
-              />
-            </div>
+          </div>
+          <div className={`${showTextArea ? "block" : "hidden"}`}>
+            <textarea
+              rows={4}
+              cols={50}
+              placeholder="Type here"
+              className="w-11/12 pl-2 py-2 focus:outline-none my-3 border-1.5 rounded"
+            />
           </div>
         </div>
 
