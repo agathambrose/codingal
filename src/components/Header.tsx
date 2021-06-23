@@ -116,15 +116,17 @@ const Header = () => {
               </div>
             </div>
             <div className="items-center hidden space-x-4 md:flex">
-              <Link to="/posts">
-                <button>Posts</button>
-              </Link>
               <p className="text-sm font-bold text-gray-600 font-poppins">
                 <span>{minutes}</span>
                 <span>:</span>
                 <span>{seconds}</span>
                 {timer}
               </p>
+              <Link to="/posts">
+                <button className="px-2 py-1.8 focus:outline-none text-gray-500 bg-gray-50 hover:bg-red-50 rounded font-poppins">
+                  Posts
+                </button>
+              </Link>
               <button
                 className="px-5 py-2 text-sm font-semibold text-white transition rounded bg-orange-border focus:outline-none hover:bg-opacity-90 font-poppins"
                 onClick={handleModalOpen}
