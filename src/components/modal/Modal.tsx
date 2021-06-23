@@ -1,13 +1,27 @@
 import { useState } from "react";
 import "./Modal.css";
 
-const DisplayModal = () => {
+interface PropTypes {
+  restart: any;
+  resume: any;
+}
+
+const DisplayModal = ({ restart, resume }: PropTypes) => {
   const [show, setShow] = useState(false);
+  const [timer, setTimer] = useState();
+
+  const handleResume = () => {
+    setTimer(resume);
+  };
+
+  const handleRestart = () => {
+    setTimer(restart);
+  };
 
   return (
     <div>
       <div className="flex justify-end">
-        <button type="button" className="text-gray-500">
+        <button type="button" className="text-gray-500" onClick={handleResume}>
           {" "}
           <svg
             className="block h-7 w-7"
@@ -24,6 +38,7 @@ const DisplayModal = () => {
               d="M6 18L18 6M6 6l12 12"
             />
           </svg>
+          {timer}
         </button>
       </div>
       <form className="flex flex-col font-poppins">
@@ -117,12 +132,14 @@ const DisplayModal = () => {
           <button
             type="submit"
             className="w-4/12 py-2 ml-5 text-white rounded-md bg-orange-border hover:opacity-95"
+            onClick={handleRestart}
           >
             End Class
           </button>
           <button
             type="button"
             className="px-2 py-2 ml-3 text-gray-600 border border-white rounded-md focus:outline-none hover:border-orange-border"
+            onClick={handleResume}
           >
             Cancel
           </button>

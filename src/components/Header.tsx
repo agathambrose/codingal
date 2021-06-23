@@ -66,7 +66,7 @@ const Header = () => {
   //timer
   const time = new Date();
   const expiryTimestamp = time.setSeconds(time.getSeconds() + 600);
-  const { seconds, minutes, pause, resume } = useTimer({
+  const { seconds, minutes, start, pause, resume, restart } = useTimer({
     expiryTimestamp,
     onExpire: () => console.warn("onExpire called"),
   });
@@ -74,13 +74,16 @@ const Header = () => {
   //modal
   const classes = useStyles();
   const [modal, setModal] = useState(false);
+  const [timer, setTimer] = useState(start);
 
   const handleModalOpen = () => {
     setModal(true);
+    setTimer(pause);
   };
 
   const handleModalClose = () => {
     setModal(false);
+    setTimer(resume);
   };
 
   return (
@@ -120,6 +123,7 @@ const Header = () => {
                 <span>{minutes}</span>
                 <span>:</span>
                 <span>{seconds}</span>
+                {timer}
               </p>
               <button
                 className="px-5 py-2 text-sm font-semibold text-white transition rounded bg-orange-border focus:outline-none hover:bg-opacity-90 font-poppins"
@@ -191,9 +195,15 @@ const Header = () => {
             >
               <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <p className="block px-3 py-2 text-base font-bold text-center text-black rounded-md hover:bg-white hover:text-black">
-                  34:40
+                  <span>{minutes}</span>
+                  <span>:</span>
+                  <span>{seconds}</span>
+                  {timer}
                 </p>
-                <button className="block w-full px-3 py-2 text-base font-semibold text-black rounded-md bg-orange-bg hover:bg-white hover:text-black">
+                <button
+                  className="block w-full px-3 py-2 text-base font-semibold text-black rounded-md bg-orange-bg hover:bg-white hover:text-black"
+                  onClick={handleModalOpen}
+                >
                   End class
                 </button>
               </div>
@@ -216,7 +226,7 @@ const Header = () => {
       >
         <Fade in={modal}>
           <div className={classes.paper}>
-            <DisplayModal />
+            <DisplayModal restart={restart} resume={resume} />
           </div>
         </Fade>
       </Modal>
