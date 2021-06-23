@@ -29,6 +29,27 @@
   left: 1px;
 }
 
+@media only screen and (max-width: 768px) {
+  .checkbox input[type="checkbox"]::before {
+    position: absolute;
+    top: 56%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    transition: 0.3s all ease;
+  }
+
+  .checkbox input:checked::after {
+    position: absolute;
+    content: "\f00c";
+    font-family: "FontAwesome";
+    font-size: 11px;
+    color: #fff;
+    top: -6px;
+    left: 3px;
+  }
+}
+
 .checkbox-sm input[type="checkbox"] {
   position: relative;
 }
@@ -59,4 +80,24 @@
   color: #fff;
   top: -3px;
   left: 1px;
+}
+@media only screen and (max-width: 768px) {
+  .checkbox-sm input[type="checkbox"]::before {
+    position: absolute;
+    top: 56%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    transition: 0.3s all ease;
+  }
+
+  .checkbox-sm input:checked::after {
+    position: absolute;
+    content: "\f00c";
+    font-family: "FontAwesome";
+    font-size: 11px;
+    color: #fff;
+    top: -2px;
+    left: 2.5px;
+  }
 }

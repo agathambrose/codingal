@@ -14,13 +14,14 @@ const useStyles = makeStyles((theme: Theme) =>
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
+      outline: "none",
     },
     paper: {
       backgroundColor: theme.palette.background.paper,
       border: "2px solid #fff",
       borderRadius: "5px",
       boxShadow: theme.shadows[4],
-      padding: theme.spacing(2, 4, 3),
+      padding: theme.spacing(2, 2, 3),
     },
   })
 );
