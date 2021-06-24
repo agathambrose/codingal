@@ -62,7 +62,7 @@ const DisplayModal = ({ restart, resume }: PropTypes) => {
         <div className="ml-5 -mr-3">
           <div className="text-lg font-medium">
             <div className="mb-3 space-x-3 checkbox" onChange={onChangeChecked}>
-              <input type="checkbox" name="complete" id="complete" />
+              <input type="checkbox" name="checkbox1" id="complete" />
               <label htmlFor="complete">Class completed</label>
             </div>
             <div
@@ -70,17 +70,21 @@ const DisplayModal = ({ restart, resume }: PropTypes) => {
               onClick={handleShow}
               onChange={onChangeChecked}
             >
-              <input type="checkbox" name="interrupted" id="interrupted" />
+              <input type="checkbox" name="checkbox1" id="interrupted" />
               <label htmlFor="interrupted">Class interrupted/aborted</label>
             </div>
           </div>
 
-          <div className={`px-3 text-sm ${show ? "block" : "hidden"}`}>
+          <div
+            className={`px-3 text-sm ${
+              show ? "block transform delay-1000" : "hidden opacity-0"
+            }`}
+          >
             <div
               className="w-full mb-3 space-x-3 checkbox-sm"
               onChange={onChangeChecked}
             >
-              <input type="checkbox" name="noshow" id="noshow" />
+              <input type="checkbox" name="checkbox2" id="noshow" />
               <label htmlFor="noshow">
                 Student didn't show up for the class.
               </label>
@@ -89,7 +93,7 @@ const DisplayModal = ({ restart, resume }: PropTypes) => {
               className="mb-3 space-x-3 checkbox-sm"
               onChange={onChangeChecked}
             >
-              <input type="checkbox" name="nointerest" id="nointerest" />
+              <input type="checkbox" name="checkbox2" id="nointerest" />
               <label htmlFor="nointerest">
                 Student didn't show any interest.
               </label>
@@ -98,26 +102,18 @@ const DisplayModal = ({ restart, resume }: PropTypes) => {
               className="mb-3 space-x-3 checkbox-sm"
               onChange={onChangeChecked}
             >
-              <input
-                type="checkbox"
-                name="disconnectedstd"
-                id="disconnectedstd"
-              />
+              <input type="checkbox" name="checkbox2" id="disconnectedstd" />
               <label htmlFor="disconnectedstd">Student got disconnected.</label>
             </div>
             <div className="mb-3 space-x-3 checkbox-sm">
-              <input
-                type="checkbox"
-                name="disconnectedyou"
-                id="disconnectedyou"
-              />
+              <input type="checkbox" name="checkbox2" id="disconnectedyou" />
               <label htmlFor="disconnectedyou">I got disconnected.</label>
             </div>
             <div
               className="mb-3 space-x-3 checkbox-sm"
               onClick={handleOtherReasons}
             >
-              <input type="checkbox" name="other" id="other" />
+              <input type="checkbox" name="checkbox2" id="other" />
               <label htmlFor="other">Other reasons</label>
             </div>
           </div>

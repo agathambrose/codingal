@@ -24,7 +24,6 @@ const Posts = () => {
   const [data, setData] = useState<any | []>([]);
   const [size] = useState(10);
   const [page, setPage] = useState(1);
-  // const [has_more, setHasMore] = useState(true);
 
   const fetchMoreData = async () => {
     let url = `https://api.instantwebtools.net/v1/passenger?page=${page}&size=${size}`;
@@ -38,8 +37,8 @@ const Posts = () => {
         if (!data) return setData(newData);
         setData(data.concat(newData));
       } catch (error) {
-        console.log(error);
-        if (error) {
+        console.log({ ...error });
+        if ({ ...error }) {
           <h4 className="font-medium text-center font-poppins">
             Oops! Something went wrong..
           </h4>;
@@ -61,7 +60,7 @@ const Posts = () => {
   return (
     <div className="flex flex-col justify-center w-screen my-3 md:w-full">
       <InfiniteScroll
-        dataLength={data.data !== undefined ? data.data.length : 0}
+        dataLength={data !== undefined ? data.length : 0}
         next={fetchMoreData}
         hasMore={true}
         loader={
