@@ -8,22 +8,20 @@ interface PropTypes {
 
 const DisplayModal = ({ restart, resume }: PropTypes) => {
   const [show, setShow] = useState(false);
-  const [showTextArea, setShowTextArea] = useState(false);
   const [timer, setTimer] = useState();
-  const [checked, setCheckBoxChecked] = useState(false);
+  const [checkedChild, setCheckedChild] = useState("");
+  const [checkedParent, setCheckedParent] = useState("");
 
   const handleShow = () => {
     setShow(true);
   };
 
-  const handleOtherReasons = () => {
-    setShowTextArea(true);
+  const onChangeCheckedParent = (val: string) => {
+    setCheckedParent(val);
   };
-
-  const onChangeChecked = () => {
-    setCheckBoxChecked(checked);
+  const onChangeCheckedChild = (val: string) => {
+    setCheckedChild(val);
   };
-
   const handleResume = () => {
     setTimer(resume);
   };
@@ -61,16 +59,26 @@ const DisplayModal = ({ restart, resume }: PropTypes) => {
         </h2>
         <div className="ml-5 -mr-3">
           <div className="text-lg font-medium">
-            <div className="mb-3 space-x-3 checkbox" onChange={onChangeChecked}>
-              <input type="checkbox" name="checkbox1" id="complete" />
+            <div className="mb-3 space-x-3 checkbox">
+              <input
+                type="checkbox"
+                name="checkbox1"
+                value="checkbox1"
+                onChange={(e) => onChangeCheckedParent(e.target.value)}
+                id="complete"
+                checked={checkedParent === "checkbox1"}
+              />
               <label htmlFor="complete">Class completed</label>
             </div>
-            <div
-              className="mb-3 space-x-3 checkbox"
-              onClick={handleShow}
-              onChange={onChangeChecked}
-            >
-              <input type="checkbox" name="checkbox1" id="interrupted" />
+            <div className="mb-3 space-x-3 checkbox" onClick={handleShow}>
+              <input
+                type="checkbox"
+                name="checkbox1.1"
+                value="checkbox2"
+                checked={checkedParent === "checkbox2"}
+                onChange={(e) => onChangeCheckedParent(e.target.value)}
+                id="interrupted"
+              />
               <label htmlFor="interrupted">Class interrupted/aborted</label>
             </div>
           </div>
@@ -80,44 +88,82 @@ const DisplayModal = ({ restart, resume }: PropTypes) => {
               show ? "block transform delay-1000" : "hidden opacity-0"
             }`}
           >
-            <div
-              className="w-full mb-3 space-x-3 checkbox-sm"
-              onChange={onChangeChecked}
-            >
-              <input type="checkbox" name="checkbox2" id="noshow" />
+            <div className="w-full mb-3 space-x-3 checkbox-sm">
+              <input
+                type="checkbox"
+                name="checkbox3"
+                value="checkbox3"
+                checked={
+                  checkedChild === "checkbox3" && checkedParent === "checkbox2"
+                }
+                onChange={(e) => onChangeCheckedChild(e.target.value)}
+                id="noshow"
+              />
               <label htmlFor="noshow">
                 Student didn't show up for the class.
               </label>
             </div>
-            <div
-              className="mb-3 space-x-3 checkbox-sm"
-              onChange={onChangeChecked}
-            >
-              <input type="checkbox" name="checkbox2" id="nointerest" />
+            <div className="mb-3 space-x-3 checkbox-sm">
+              {" "}
+              <input
+                type="checkbox"
+                onChange={(e) => onChangeCheckedChild(e.target.value)}
+                name="checkbox4"
+                value="checkbox4"
+                checked={
+                  checkedChild === "checkbox4" && checkedParent === "checkbox2"
+                }
+                id="nointerest"
+              />
               <label htmlFor="nointerest">
                 Student didn't show any interest.
               </label>
             </div>
-            <div
-              className="mb-3 space-x-3 checkbox-sm"
-              onChange={onChangeChecked}
-            >
-              <input type="checkbox" name="checkbox2" id="disconnectedstd" />
+            <div className="mb-3 space-x-3 checkbox-sm">
+              <input
+                onChange={(e) => onChangeCheckedChild(e.target.value)}
+                type="checkbox"
+                name="checkbox5"
+                value="checkbox5"
+                checked={
+                  checkedChild === "checkbox5" && checkedParent === "checkbox2"
+                }
+                id="disconnectedstd"
+              />
               <label htmlFor="disconnectedstd">Student got disconnected.</label>
             </div>
             <div className="mb-3 space-x-3 checkbox-sm">
-              <input type="checkbox" name="checkbox2" id="disconnectedyou" />
+              <input
+                type="checkbox"
+                name="checkbox6"
+                value="checkbox6"
+                checked={
+                  checkedChild === "checkbox6" && checkedParent === "checkbox2"
+                }
+                onChange={(e) => onChangeCheckedChild(e.target.value)}
+                id="disconnectedyou"
+              />
               <label htmlFor="disconnectedyou">I got disconnected.</label>
             </div>
-            <div
-              className="mb-3 space-x-3 checkbox-sm"
-              onClick={handleOtherReasons}
-            >
-              <input type="checkbox" name="checkbox2" id="other" />
+            <div className="mb-3 space-x-3 checkbox-sm">
+              <input
+                type="checkbox"
+                onChange={(e) => {
+                  onChangeCheckedChild(e.target.value);
+                }}
+                name="checkbox7"
+                value="checkbox7"
+                checked={
+                  checkedChild === "checkbox7" && checkedParent === "checkbox2"
+                }
+                id="other"
+              />
               <label htmlFor="other">Other reasons</label>
             </div>
           </div>
-          <div className={`${showTextArea ? "block" : "hidden"}`}>
+          <div
+            className={`${checkedChild === "checkbox7" ? "block" : "hidden"}`}
+          >
             <textarea
               rows={4}
               cols={50}
