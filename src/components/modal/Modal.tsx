@@ -166,7 +166,11 @@ const DisplayModal = ({ restart, resume }: PropTypes) => {
             </div>
           </div>
           <div
-            className={`${checkedChild === "checkbox7" ? "block" : "hidden"}`}
+            className={`${
+              checkedChild === "checkbox7" && checkedParent !== "checkbox1"
+                ? "block"
+                : "hidden"
+            }`}
           >
             <textarea
               rows={4}
