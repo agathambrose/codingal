@@ -59,18 +59,22 @@ const DisplayModal = ({ restart, resume }: PropTypes) => {
         </h2>
         <div className="ml-5 -mr-3">
           <div className="text-lg font-medium">
-            <div className="mb-3 space-x-3 checkbox">
+            <div className="mb-3 space-x-3 cursor-pointer checkbox">
               <input
                 type="checkbox"
                 name="checkbox1"
                 value="checkbox1"
+                onClick={() => setShow(false)}
                 onChange={(e) => onChangeCheckedParent(e.target.value)}
                 id="complete"
                 checked={checkedParent === "checkbox1"}
               />
               <label htmlFor="complete">Class completed</label>
             </div>
-            <div className="mb-3 space-x-3 checkbox" onClick={handleShow}>
+            <div
+              className="mb-3 space-x-3 cursor-pointer checkbox"
+              onClick={handleShow}
+            >
               <input
                 type="checkbox"
                 name="checkbox1.1"
@@ -88,7 +92,7 @@ const DisplayModal = ({ restart, resume }: PropTypes) => {
               show ? "block transform delay-1000" : "hidden opacity-0"
             }`}
           >
-            <div className="w-full mb-3 space-x-3 checkbox-sm">
+            <div className="w-full mb-3 space-x-3 cursor-pointer checkbox-sm">
               <input
                 type="checkbox"
                 name="checkbox3"
@@ -103,7 +107,7 @@ const DisplayModal = ({ restart, resume }: PropTypes) => {
                 Student didn't show up for the class.
               </label>
             </div>
-            <div className="mb-3 space-x-3 checkbox-sm">
+            <div className="mb-3 space-x-3 cursor-pointer checkbox-sm">
               {" "}
               <input
                 type="checkbox"
@@ -119,7 +123,7 @@ const DisplayModal = ({ restart, resume }: PropTypes) => {
                 Student didn't show any interest.
               </label>
             </div>
-            <div className="mb-3 space-x-3 checkbox-sm">
+            <div className="mb-3 space-x-3 cursor-pointer checkbox-sm">
               <input
                 onChange={(e) => onChangeCheckedChild(e.target.value)}
                 type="checkbox"
@@ -132,7 +136,7 @@ const DisplayModal = ({ restart, resume }: PropTypes) => {
               />
               <label htmlFor="disconnectedstd">Student got disconnected.</label>
             </div>
-            <div className="mb-3 space-x-3 checkbox-sm">
+            <div className="mb-3 space-x-3 cursor-pointer checkbox-sm">
               <input
                 type="checkbox"
                 name="checkbox6"
@@ -145,7 +149,7 @@ const DisplayModal = ({ restart, resume }: PropTypes) => {
               />
               <label htmlFor="disconnectedyou">I got disconnected.</label>
             </div>
-            <div className="mb-3 space-x-3 checkbox-sm">
+            <div className="mb-3 space-x-3 cursor-pointer checkbox-sm">
               <input
                 type="checkbox"
                 onChange={(e) => {
